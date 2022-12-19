@@ -1,0 +1,34 @@
+{
+  "applications": "*",
+  "changelogDate": "20221219104317",
+  "clientRootFolder": "jhFisrtMicroService",
+  "databaseType": "sql",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "jhi_order",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "address",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "jhFisrtMicroService",
+  "name": "Order",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "bill",
+      "otherEntityRelationshipName": "order",
+      "relationshipName": "bill",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "no"
+}

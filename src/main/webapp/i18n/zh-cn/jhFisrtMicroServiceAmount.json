@@ -1,0 +1,24 @@
+{
+  "jhFisrtMicroServiceApp": {
+    "jhFisrtMicroServiceAmount": {
+      "home": {
+        "title": "Amounts",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "创建新 Amount",
+        "createOrEditLabel": "创建或编辑 Amount",
+        "notFound": "No Amounts found"
+      },
+      "created": "Amount {{ param }} 创建成功",
+      "updated": "Amount {{ param }} 更新成功",
+      "deleted": "Amount {{ param }} 删除成功",
+      "delete": {
+        "question": "你确定要删除 Amount {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "Amount"
+      },
+      "id": "ID",
+      "count": "Count"
+    }
+  }
+}
