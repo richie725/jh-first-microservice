@@ -1,0 +1,25 @@
+entity Order {
+  name String,
+  address String
+}
+
+entity Bill {
+  name String,
+  amount Float
+}
+
+relationship OneToMany {
+  Order to Bill{order}
+}
+
+paginate Order with infinite-scroll
+paginate Bill with pagination
+
+dto * with mapstruct
+
+service Order with serviceImpl
+service Bill with serviceClass
+
+
+
+    
