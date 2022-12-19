@@ -1,0 +1,26 @@
+{
+  "jhFisrtMicroServiceApp": {
+    "jhFisrtMicroServiceBill": {
+      "home": {
+        "title": "Bills",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "创建新 Bill",
+        "createOrEditLabel": "创建或编辑 Bill",
+        "notFound": "No Bills found"
+      },
+      "created": "Bill {{ param }} 创建成功",
+      "updated": "Bill {{ param }} 更新成功",
+      "deleted": "Bill {{ param }} 删除成功",
+      "delete": {
+        "question": "你确定要删除 Bill {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "Bill"
+      },
+      "id": "ID",
+      "name": "Name",
+      "amount": "Amount",
+      "order": "Order"
+    }
+  }
+}
