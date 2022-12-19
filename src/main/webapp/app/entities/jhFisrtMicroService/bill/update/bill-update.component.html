@@ -1,0 +1,56 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-bill-heading"
+        data-cy="BillCreateUpdateHeading"
+        jhiTranslate="jhFisrtMicroServiceApp.jhFisrtMicroServiceBill.home.createOrEditLabel"
+      >
+        创建或编辑 Bill
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhFisrtMicroServiceApp.jhFisrtMicroServiceBill.name" for="field_name">Name</label>
+          <input type="text" class="form-control" name="name" id="field_name" data-cy="name" formControlName="name" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhFisrtMicroServiceApp.jhFisrtMicroServiceBill.amount" for="field_amount">Amount</label>
+          <input type="number" class="form-control" name="amount" id="field_amount" data-cy="amount" formControlName="amount" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhFisrtMicroServiceApp.jhFisrtMicroServiceBill.order" for="field_order">Order</label>
+          <select class="form-control" id="field_order" data-cy="order" name="order" formControlName="order" [compareWith]="compareOrder">
+            <option [ngValue]="null"></option>
+            <option [ngValue]="orderOption" *ngFor="let orderOption of ordersSharedCollection">{{ orderOption.id }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">取消</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">保存</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

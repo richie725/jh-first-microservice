@@ -1,0 +1,106 @@
+<div>
+  <h2 id="page-heading" data-cy="BillHeading">
+    <span jhiTranslate="jhFisrtMicroServiceApp.jhFisrtMicroServiceBill.home.title">Bills</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="jhFisrtMicroServiceApp.jhFisrtMicroServiceBill.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-bill"
+        [routerLink]="['/jhfisrtmicroservice/bill/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="jhFisrtMicroServiceApp.jhFisrtMicroServiceBill.home.createLabel"> 创建新 Bill </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="bills?.length === 0">
+    <span jhiTranslate="jhFisrtMicroServiceApp.jhFisrtMicroServiceBill.home.notFound">No Bills found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="bills && bills.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="name">
+            <div class="d-flex">
+              <span jhiTranslate="jhFisrtMicroServiceApp.jhFisrtMicroServiceBill.name">Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="amount">
+            <div class="d-flex">
+              <span jhiTranslate="jhFisrtMicroServiceApp.jhFisrtMicroServiceBill.amount">Amount</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="order.id">
+            <div class="d-flex">
+              <span jhiTranslate="jhFisrtMicroServiceApp.jhFisrtMicroServiceBill.order">Order</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let bill of bills; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/jhfisrtmicroservice/bill', bill.id, 'view']">{{ bill.id }}</a>
+          </td>
+          <td>{{ bill.name }}</td>
+          <td>{{ bill.amount }}</td>
+          <td>
+            <div *ngIf="bill.order">
+              <a [routerLink]="['/jhfisrtmicroservice/order', bill.order.id, 'view']">{{ bill.order.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/jhfisrtmicroservice/bill', bill.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">查看</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/jhfisrtmicroservice/bill', bill.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">编辑</span>
+              </button>
+
+              <button type="submit" (click)="delete(bill)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">删除</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

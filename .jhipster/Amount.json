@@ -1,0 +1,23 @@
+{
+  "applications": "*",
+  "changelogDate": "20221219104319",
+  "clientRootFolder": "jhFisrtMicroService",
+  "databaseType": "sql",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "amount",
+  "fields": [
+    {
+      "fieldName": "count",
+      "fieldType": "Float"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "jhFisrtMicroService",
+  "name": "Amount",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}
